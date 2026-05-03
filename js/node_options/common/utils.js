@@ -1,5 +1,11 @@
 import { app } from '../../../../scripts/app.js'
-import { $el } from "../../../../scripts/ui.js";
+// === SHIM FOR NEW COMFYUI (removes ui.js warning) ===
+let $el;
+if (window?.comfyAPI?.ui) {
+    ({ $el } = window.comfyAPI.ui);
+} else {
+    ({ $el } = await import("../../../../scripts/ui.js"));
+}
 
 export function addStylesheet(url) {
 	if (url.endsWith(".js")) {
