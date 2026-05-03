@@ -1,4 +1,6 @@
 import { app } from "../../../scripts/app.js";
+import { ModelInfoDialog } from "./common/modelInfoDialog.js";
+import { addMenuHandler } from "./common/utils.js";
 // === SHIM FOR NEW COMFYUI (removes ui.js warning) ===
 let $el;
 if (window?.comfyAPI?.ui) {
@@ -6,9 +8,6 @@ if (window?.comfyAPI?.ui) {
 } else {
     ({ $el } = await import("../../../scripts/ui.js"));
 }
-
-import { ModelInfoDialog } from "./common/modelInfoDialog.js";
-import { addMenuHandler } from "./common/utils.js";
 
 const MAX_TAGS = 500;
 
