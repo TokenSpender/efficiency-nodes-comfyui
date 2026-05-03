@@ -1,4 +1,11 @@
-import { $el, ComfyDialog } from "../../../../scripts/ui.js";
+// === SHIM FOR NEW COMFYUI (removes ui.js warning) ===
+let $el, ComfyDialog;
+if (window?.comfyAPI?.ui) {
+    ({ $el, ComfyDialog } = window.comfyAPI.ui);
+} else {
+    ({ $el, ComfyDialog } = await import("../../../../scripts/ui.js"));
+}
+
 import { api } from "../../../../scripts/api.js";
 import { addStylesheet } from "./utils.js";
 
