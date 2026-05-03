@@ -1,5 +1,12 @@
 import { app } from "../../../scripts/app.js";
-import { $el } from "../../../scripts/ui.js";
+// === SHIM FOR NEW COMFYUI (removes ui.js warning) ===
+let $el;
+if (window?.comfyAPI?.ui) {
+    ({ $el } = window.comfyAPI.ui);
+} else {
+    ({ $el } = await import("../../../scripts/ui.js"));
+}
+
 import { ModelInfoDialog } from "./common/modelInfoDialog.js";
 import { addMenuHandler } from "./common/utils.js";
 
